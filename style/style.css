@@ -1,0 +1,197 @@
+/* Variables */
+:root {
+  --cell-size: 200px;
+  --mark-size: 180px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  background-color: #22092C;
+  display: flex;
+}
+
+/* rules setion style */
+.rules-container {
+  flex: 1;
+  background-color: #363062;
+  padding: 1em;
+  border-right: 2px solid #872341;
+}
+
+.rules-container_title {
+  text-align: center;
+  text-decoration: underline;
+  color: #F05941;
+}
+
+.rules-container_rules {
+  color: #F05941;
+  font-size: 1.2rem;
+}
+
+
+/* board style is set to grid */
+.board {
+  flex: 3;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  gap: .2rem;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+  border-radius: 10px;
+}
+
+/* cells style and size */
+.cell {
+  width: 200px;
+  height: 200px;
+  border: 4px solid #F05941;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+
+/* change border color on outer cells
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: 4px solid red;
+}
+
+.cell:nth-child(3n+1) {
+  border-left: 4px solid red;
+}
+
+.cell:nth-child(3n+3) {
+  border-right: 4px solid red;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: 4px solid red;
+} */
+
+/* X and O marks and cells */
+
+/* change cursor behavior */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+/* create X mark */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 200px;
+  background-color: #872341;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* Create O mark */
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  width: 180px;
+  height: 180px;
+  background-color: #BE3144;
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  height: 140px;
+  width: 140px;
+  background-color: #22092C;
+}
+
+/* empty cells will show the mark of current player in grey */
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  background-color: #4E3636;
+}
+
+
+/* Winning message and restart button */
+
+/* hidden by dafault */
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(34, 9, 44, .9);
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+/* show when there is a conclusion */
+.winning-message.show {
+  display: flex;
+}
+
+/* restart button style */
+.winning-message button {
+  color: #22092C;
+  font-size: 3rem;
+  padding: .25em .5em;
+  background-color: #CD1818;
+  border: 2px solid #116D6E;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: border-radius 150ms ease-in-out;
+}
+
+.winning-message button:hover {
+  background-color: #4E3636;
+  color: white;
+  border-color: #CD1818;
+  border-radius: 0;
+}

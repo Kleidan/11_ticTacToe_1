@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- My Style: -->
+  <link rel="stylesheet" href="./style/style.css">
+
+  <!-- My Script -->
+  <script src="./script/script.js" defer async></script>
+
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="rules-container">
+      <h1 class="rules-container_title">Tic-Tac-Toe</h1>
+      <div class="rules-container_rules">
+        <p>Welcome!</p>
+        <p>This is the good old classical and beloved tic-tac-toe game, the rules to this game are very simple:
+        </p>
+        <p>
+          First you need to find a frind to play with. Next you need to decide who goes first and plays as X. On the
+          grid to the right, X places his first mark on one of the cells on the grid. Next goes O and he places his mark
+          on an empty cell.
+        </p>
+        <p>
+          The Goal of the game is to create a set of three X's or O's. the combination can be horizontal, vertical or
+          diagonal. First to create a set is the winner!
+        </p>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div class="board" id="board">
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+    </div>
+  </div>
+
+  <div class="winning-message" id="winningMessage">
+    <div data-winning-mesasge-text></div>
+    <button id="restartBtn">Restart</button>
+  </div>
+</body>
+
+</html>
